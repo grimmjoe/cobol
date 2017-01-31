@@ -1,0 +1,28 @@
+IDENTIFICATION DIVISION.
+Program-ID. is_triangle.
+Author. grimmjoe.
+
+ENVIRONMENT DIVISION.
+
+DATA DIVISION.
+Local-Storage Section.
+01 a PIC 9999v9(20) value 0.
+01 b PIC 9999v9(20) value 0.
+01 c PIC 9999v9(20) value 0.
+
+PROCEDURE DIVISION.
+  DISPLAY "Enter a: " WITH NO ADVANCING.
+  ACCEPT a FROM CONSOLE.
+
+  DISPLAY "Enter b: " WITH NO ADVANCING.
+  ACCEPT b FROM CONSOLE.
+
+  DISPLAY "Enter c: " WITH NO ADVANCING.
+  ACCEPT c FROM CONSOLE.
+
+  IF a<(b+c) AND b<(a+c) AND c<(a+b)
+    DISPLAY "GOOD TRIANGLE."
+  ELSE
+    DISPLAY "NOT A TRIANGLE."
+  END-IF.
+END PROGRAM is_triangle.
