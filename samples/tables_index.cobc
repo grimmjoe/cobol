@@ -1,0 +1,34 @@
+IDENTIFICATION DIVISION.
+Program-ID. table_index.
+Author. grimmjoe.
+
+ENVIRONMENT DIVISION.
+
+DATA DIVISION.
+Local-Storage Section.
+01 index_b USAGE IS INDEX.
+01 sample_array.
+  05 array_element PIC 9(4)
+      OCCURS 3 INDEXED BY index_a VALUE 0.
+
+PROCEDURE DIVISION.
+  SET index_a TO 3.
+  SET index_b TO index_a.
+  PERFORM VARYING index_a FROM 1 BY 1 UNTIL index_a > index_b
+    DISPLAY array_element(index_a)
+  END-PERFORM.
+
+  PERFORM VARYING index_b FROM 1 BY 1 UNTIL index_b > 3
+    DISPLAY array_element(index_b)
+  END-PERFORM.
+
+  MOVE 4 TO array_element(1).
+  MOVE 32 TO array_element(2).
+  MOVE 128 TO array_element(3).
+
+  MOVE 11 TO array_element(1) (1:2).
+
+  PERFORM VARYING index_a FROM 1 BY 1 UNTIL index_a > 3
+    DISPLAY array_element(index_a)
+  END-PERFORM.
+END PROGRAM table_index.
