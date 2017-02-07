@@ -1,0 +1,20 @@
+identification division.
+program-id. var-array.
+
+environment division.
+
+data division.
+local-storage section.
+01 i usage index.
+01 vector.
+  05 arr_size pic 99.
+  05 array occurs 1 to 10 times depending on arr_size pic X value "H".
+
+procedure division.
+  display "start".
+
+  MOVE 8 TO arr_size.
+  PERFORM VARYING i FROM 1 BY 1 UNTIL i > arr_size
+    display "array(" i ") = " array(i) 
+  END-PERFORM.
+end program var-array.
