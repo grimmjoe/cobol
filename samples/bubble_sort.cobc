@@ -1,0 +1,48 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID. BUBBLE-SORT.
+AUTHOR. ASLANYAN.
+
+ENVIRONMENT DIVISION.
+
+DATA DIVISION.
+LOCAL-STORAGE SECTION.
+01 VECTOR.
+  05 ARR_SIZE PIC 9(2) VALUE 0.
+  05 ARRAY pic s999 occurs 1 to 100 times depending on arr_size value 0.
+01 i usage index.
+01 tmp pic 99 value 0.
+01 was_swapped PIC 9 value 1.
+01 tmp_swap PIC s999 value 0.
+
+PROCEDURE DIVISION.
+
+  display "Size: " WITH NO ADVANCING.
+  accept arr_size from console.
+
+  perform varying i from 1 by 1 until i > arr_size
+    accept array(i) from console
+  end-perform.
+
+  move 1 to was_swapped.
+
+  perform until was_swapped NOT= 1
+    move 0 to was_swapped
+    perform varying i from 2 by 1 until i > arr_size
+      SUBTRACT 1 FROM i GIVING tmp
+      if array(tmp) > array(i)
+        move 1 to was_swapped
+        
+      compute tmp_swap=array(i)
+      compute array(i)=array(tmp)
+      compute array(tmp)=tmp_swap
+
+      end-if
+    end-perform
+  end-perform.
+
+  display "New array: " with no advancing.
+  perform varying i from 1 by 1 until i > arr_size
+    display array(i) " " with no advancing
+  end-perform.
+
+END PROGRAM BUBBLE-SORT.
