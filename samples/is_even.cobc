@@ -1,0 +1,27 @@
+IDENTIFICATION DIVISION.
+Program-ID. is_even.
+Author. grimmjoe.
+
+ENVIRONMENT DIVISION.
+
+DATA DIVISION.
+Local-Storage Section.
+01 a PIC 9(4) value 0.
+01 d PIC 9(4) value 0.
+01 r PIC 9(4) value 0.
+
+PROCEDURE DIVISION.
+  DISPLAY "Enter a: " WITH NO ADVANCING.
+  ACCEPT a FROM CONSOLE.
+
+  DIVIDE a BY 2 GIVING d REMAINDER r.
+
+  display "D = " d ", r = " r.
+
+  if r = 0
+    display "Even"
+  else
+    display "Odd"
+  end-if.
+
+END PROGRAM is_even.
