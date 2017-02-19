@@ -1,0 +1,31 @@
+IDENTIFICATION DIVISION.
+Program-ID. table01.
+Author. grimmjoe.
+
+ENVIRONMENT DIVISION.
+
+DATA DIVISION.
+Local-Storage Section.
+01 sample_array.
+  05 array_element OCCURS 3 TIMES.
+  	10 str pic X(10).
+	10 int_part pic 9(4).
+
+PROCEDURE DIVISION.
+  DISPLAY "1: " array_element(1).
+  DISPLAY "2: " array_element(2).
+  DISPLAY "3: " array_element(3).
+
+  MOVE 4 TO array_element(1).
+  MOVE 32 TO array_element(2).
+  MOVE 128 TO array_element(3).
+
+  MOVE 11 TO array_element(1) (1:2).
+
+  MOVE "Hamlet" to array_element(2).
+  move 1234 to array_element(3) (11:4).
+
+  DISPLAY "1: " array_element(1).
+  DISPLAY "2: " array_element(2).
+  DISPLAY "3: " array_element(3).
+END PROGRAM table01.
