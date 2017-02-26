@@ -1,0 +1,60 @@
+identification division.
+program-id. line_seq_file.
+author. hamlet.
+
+environment division.
+input-output section.
+file-control.
+  SELECT in_file assign to "input.txt" organization line sequential file status is file_status.
+  SELECT out_file assign to "output.txt" organization line sequential file
+  status is out_file_status.
+
+data division.
+file section.
+FD in_file.
+
+01 file_record.
+  05 iname pic X(10).
+  05 iage  pic 9(3).
+
+FD out_file.
+01 ofile_record.
+  05 name pic X(10).
+  05 age pic X(3).
+  05 empty_space pic X(2) value " ".
+  05 level pic 9.
+
+local-storage section.
+01 file_status PIC 99 value 0.
+01 out_file_status PIC 99 value 0.
+
+01 tmp_record.
+  05 rname pic X(10).
+  05 rage pic X(3).
+  05 e_space pic X(2) value " ".
+  05 rlevel pic 9.
+	
+
+PROCEDURE DIVISION.
+01-MAIN.
+  open INPUT in_file
+  open OUTPUT out_file
+  display "file_status = " file_status
+  PERFORM 02-READ UNTIL file_status = 1
+  CLOSE in_file
+  CLOSE out_file
+  .
+
+02-READ.
+  READ in_file
+    AT END move 1 to file_status
+    NOT AT END display "file_rec = " file_record
+		display iname "->" iage
+		move iname to rname
+		move iage to rage
+		move 1 to rlevel
+		write ofile_record from tmp_record
+  END-READ
+  .
+END Program line_seq_file.
+
