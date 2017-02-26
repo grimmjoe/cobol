@@ -11,6 +11,8 @@ Local-Storage Section.
   	10 str pic X(10).
 	10 int_part pic 9(4).
 
+01 i pic 9 value 0.
+
 PROCEDURE DIVISION.
   DISPLAY "1: " array_element(1).
   DISPLAY "2: " array_element(2).
@@ -28,4 +30,14 @@ PROCEDURE DIVISION.
   DISPLAY "1: " array_element(1).
   DISPLAY "2: " array_element(2).
   DISPLAY "3: " array_element(3).
+
+  perform varying i from 1 by 1 until i > 3
+  	accept str(i)
+	accept int_part(i)
+  end-perform.
+
+  perform varying i from 1 by 1 until i > 3
+  	display str(i) "->" int_part(i)
+  end-perform.
+
 END PROGRAM table01.
